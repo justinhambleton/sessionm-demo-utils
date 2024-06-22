@@ -1,0 +1,542 @@
+[
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "d1552900-2a01-4424-aa1f-1e8b5ff4dc25",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "IN-STORE",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "7f461e96-0882-4c4d-b698-64994049c325",
+                "guest_count": 1,
+                "subtotal": 11.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 11.0,
+                        "subtotal": 11.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "a331d2fb-a825-4396-9d35-71c906ffe0d6",
+                        "amount": 11.0,
+                        "type": "Credit",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "f600dcf4-b2e8-40d8-8625-3e28f67cb08f",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "c8ec056a-a08e-4c77-963d-92885bbb2ea7",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "POS",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "c5f73745-05ff-4594-88b2-4acb982d5b15",
+                "guest_count": 1,
+                "subtotal": 29.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 29.0,
+                        "subtotal": 29.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "42a76a51-b62f-4053-89e7-6f550ef745c5",
+                        "amount": 29.0,
+                        "type": "Credit",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "f2afd154-f76e-427a-9aac-075696bfa981",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "ded5bfba-3048-449c-90f3-236becca36d2",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "IN-STORE",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "e616ccef-3b61-47ec-a5a0-6c4c464914c5",
+                "guest_count": 1,
+                "subtotal": 40.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 40.0,
+                        "subtotal": 40.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "aafe041a-0804-475b-9be7-382bc6059504",
+                        "amount": 40.0,
+                        "type": "Cash",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "29ad0505-4d0d-4271-85a2-3b08edf7e739",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "51bb42e7-be00-49c7-b47a-dbceb69b1dc9",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "MOBILE",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "a5dba786-d72c-420d-8e7b-55d8d2d757f2",
+                "guest_count": 1,
+                "subtotal": 49.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 49.0,
+                        "subtotal": 49.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "b45534da-b381-4dd8-af8a-8e5410107c2f",
+                        "amount": 49.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "25ad5e1d-48c4-4471-8cb4-9436f1e2ea66",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "92bb766a-a409-4ebf-9aab-47b1555051a3",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "IN-STORE",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "355a064d-da29-4f6e-bc77-cc3bb139eff7",
+                "guest_count": 1,
+                "subtotal": 60.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 60.0,
+                        "subtotal": 60.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "37243065-f156-4253-86f6-9d85a2185b74",
+                        "amount": 60.0,
+                        "type": "Cash",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "98563116-6cb4-4b0a-b27a-46c0832c7a03",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "ca0aab9c-7839-4624-8c3a-99cbe067b086",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "IN-STORE",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "44b1707d-4dd7-4593-880c-652996a437d2",
+                "guest_count": 1,
+                "subtotal": 75.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 75.0,
+                        "subtotal": 75.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "de09a7ef-d242-437c-be8f-7c794468bb49",
+                        "amount": 75.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "88866261-7fbf-4a30-9d53-d9c0a5b920f3",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "e912b5c5-ceb4-4252-a3bc-2e2f79464b8b",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "IN-STORE",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "f5823040-7d53-4385-afe7-ffd95dadf02f",
+                "guest_count": 1,
+                "subtotal": 45.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 45.0,
+                        "subtotal": 45.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "5effa5a7-c148-4b53-a1ea-9ef2a285b595",
+                        "amount": 45.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "8d82ba10-94ea-4967-91c4-b4eaeaf8ebd5",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "cb827a54-8749-48f7-b6b8-4c7a74086cd5",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "POS",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "b2e79b37-cbfb-4323-88e9-47fd4dad5566",
+                "guest_count": 1,
+                "subtotal": 39.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 39.0,
+                        "subtotal": 39.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "00a7584a-db57-4532-8d20-f6d9e2a832bd",
+                        "amount": 39.0,
+                        "type": "Cash",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "3e96f3fe-bdb1-4804-ada5-082347c13883",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "ff38301e-b9eb-4760-aa73-bcd346095b92",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "POS",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "cbb95429-aa87-4504-a74b-d446f33dcfd8",
+                "guest_count": 1,
+                "subtotal": 60.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 60.0,
+                        "subtotal": 60.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "40b50d8b-959a-45ee-b7f1-e5a6ed30c049",
+                        "amount": 60.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "8645f1d7-a855-4816-aa75-2c159e348cd9",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "35037a42-8986-42d9-a230-5a8a6cb391a6",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "POS",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "f9ebf77b-b315-49d2-95d8-3b1b5f8647e2",
+                "guest_count": 1,
+                "subtotal": 63.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.526Z",
+                "modified_time": "2024-06-22T15:26:17.526Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 63.0,
+                        "subtotal": 63.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "22656093-e7d6-46e7-9600-99cfb5dd49d0",
+                        "amount": 63.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-22T15:26:17.526Z",
+                        "user_id": "25831f72-54b1-4438-9d68-676647750d96",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "d226c97d-c78d-4f92-9802-58ec32b5ab73",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "POS",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "8402e7a5-38c3-4764-ac1b-3930493f1396",
+                "guest_count": 1,
+                "subtotal": 92.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.527Z",
+                "modified_time": "2024-06-22T15:26:17.527Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 92.0,
+                        "subtotal": 92.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "e7b0401b-dc95-4f99-896b-8f6707a8b474",
+                        "amount": 92.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-22T15:26:17.527Z",
+                        "user_id": "6fa6196b-54af-4549-8e31-944454b8058a",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "B7944570-DA96-4C87-8629-87AAC7BEB4E8",
+            "client_id": "bee4a5bb-a65f-4245-a8ef-ae6d38157858",
+            "request_id": "126fa2c4-dab6-4921-8493-0201cd2f6713",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "POS",
+                "custom_data": {
+                    "brand": "Koalla Retail"
+                },
+                "pos_employee_id": "234234",
+                "transaction_id": "e346f7a4-adb0-4d19-b0dd-64472c1b8669",
+                "guest_count": 1,
+                "subtotal": 76.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-22T15:26:17.527Z",
+                "modified_time": "2024-06-22T15:26:17.527Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 76.0,
+                        "subtotal": 76.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "9045f43b-9bd8-4e1e-a7b2-ea1837a0b69a",
+                        "amount": 76.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-22T15:26:17.527Z",
+                        "user_id": "669fb695-06dc-437e-973b-3462fa206821",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": []
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    }
+]
