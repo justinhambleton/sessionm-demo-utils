@@ -57,6 +57,7 @@ Run the `generate_customer.py` script to generate random customer data. This scr
 
 - `--context` (required): Specifies the demo environment context: expects retail, qsr or fuel.
 - `--sendTxns` (optional): If included, invokes the `send_first_transactions.py` script to send the first transactions for the generated customers.
+- `--enableLogging` (optional): If included, enables logging, which writes a JSON file for generate_customers and, if enabled, send_first_transactions.
 
 ### Example Usage
 
