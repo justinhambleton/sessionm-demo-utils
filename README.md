@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project generates random customer data and, optionally, sends a first transaction to a randomized percentage of the new customers. The project is designed to be run exclusively from the `generate_customer.py` script.
+This project generates random customer data against a specific SessionM demo environment and, optionally, sends a first transaction to a randomized percentage of the newly generated customers. The project is designed to be run exclusively from the `generate_customer.py` script, along wih the arguments outlined below.
 
 ## Table of Contents
 
@@ -51,12 +51,12 @@ pip install pymongo faker
 
 ### Running the Script
 
-Run the `generate_customer.py` script to generate random customer data. This script accepts command-line arguments to customize its behavior.
+This script accepts important command-line arguments to customize its behavior. Before running the `generate_customer.py` script, familiarize yourself with the arguments below to ensure proper useage.
 
 ### Arguments
 
-- `--context` (required): Specifies the demo environment context: expects retail, qsr or fuel.
-- `--sendTxns` (optional): If included, invokes the `send_first_transactions.py` script to send the first transactions for the generated customers.
+- `--context` (required): Specifies the demo environment context. Can only be one of: retail, qsr or fuel.
+- `--sendTxns` (optional): If included, invokes the `send_first_transactions.py` script to send first transactions to a randomized percentage of the the generated customers.
 - `--enableLogging` (optional): If included, enables logging, which writes a JSON file for generate_customers and, if enabled, send_first_transactions.
 
 ### Example Usage
@@ -83,11 +83,13 @@ Run the `generate_customer.py` script to generate random customer data. This scr
 
 ### generate_customer.py
 
-This is the main script for generating random customer data. It accepts command-line arguments to control the number of customers generated and whether to invoke the transaction script.
+This is the main script for generating random customer data. It accepts command-line arguments to control the number of customers generated and whether to invoke the transaction script. It includes an important setting that determines the range of new customer profiles created. This range is always random and between a min and max value. The max value is the most important setting to pay attention to. It is recommended this never exceed 500.
+
+This script can run indepdently and without generating transactions so long as the --sendTxns argument is not included when the script is invoked (see usage example above).
 
 ### send_first_transactions.py
 
-This script is invoked by `generate_customer.py` if the `--sendTxns` argument is included. It handles sending the first transactions for the generated customers.
+This script is only invoked by `generate_customer.py` when the `--sendTxns` argument is included. This script handles sending first transactions to a randomized percentage of the newly generated customers. By default, the script only sends transactions to a randomized 40% of the new customer profiles. It is not a realistic scenario for 100% of new customers to perform a first transaction. This setting can be set to 100% if used for testing purposes and not to simulate real-world transaction behavior.
 
 ## Contributing
 
@@ -96,75 +98,5 @@ This is a private project and not open to public contribution.
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-## Example Code Snippets
-
-### generate_customer.py
-
-```python
-import argparse
-from pymongo import MongoClient
-from faker import Faker
-import subprocess
-
-def generate_customers(num_customers):
-    fake = Faker()
-    client = MongoClient('localhost', 27017)
-    db = client.mydatabase
-    customers = db.customers
-
-    for _ in range(num_customers):
-        customer = {
-            'name': fake.name(),
-            'email': fake.email(),
-            'phone': fake.phone_number(),
-            'address': fake.address()
-        }
-        customers.insert_one(customer)
-
-    client.close()
-
-def main():
-    parser = argparse.ArgumentParser(description='Generate random customers.')
-    parser.add_argument('--num_customers', type=int, required=True, help='Number of customers to generate')
-    parser.add_argument('--sendTxns', action='store_true', help='Send first transactions for the customers')
-    args = parser.parse_args()
-
-    generate_customers(args.num_customers)
-
-    if args.sendTxns:
-        subprocess.call(['python', 'send_first_transactions.py'])
-
-if __name__ == '__main__':
-    main()
-```
-
-### send_first_transactions.py
-
-```python
-from pymongo import MongoClient
-from faker import Faker
-
-def send_transactions():
-    fake = Faker()
-    client = MongoClient('localhost', 27017)
-    db = client.mydatabase
-    customers = db.customers.find()
-
-    for customer in customers:
-        transaction = {
-            'customer_id': customer['_id'],
-            'amount': fake.random_number(digits=5),
-            'date': fake.date_time_this_year()
-        }
-        db.transactions.insert_one(transaction)
-
-    client.close()
-
-if __name__ == '__main__':
-    send_transactions()
-```
 
 ---
