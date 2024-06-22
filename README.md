@@ -98,3 +98,73 @@ This is a private project and not open to public contribution.
 This project is licensed under the MIT License.
 
 ---
+
+## Example Code Snippets
+
+### generate_customer.py
+
+```python
+import argparse
+from pymongo import MongoClient
+from faker import Faker
+import subprocess
+
+def generate_customers(num_customers):
+    fake = Faker()
+    client = MongoClient('localhost', 27017)
+    db = client.mydatabase
+    customers = db.customers
+
+    for _ in range(num_customers):
+        customer = {
+            'name': fake.name(),
+            'email': fake.email(),
+            'phone': fake.phone_number(),
+            'address': fake.address()
+        }
+        customers.insert_one(customer)
+
+    client.close()
+
+def main():
+    parser = argparse.ArgumentParser(description='Generate random customers.')
+    parser.add_argument('--num_customers', type=int, required=True, help='Number of customers to generate')
+    parser.add_argument('--sendTxns', action='store_true', help='Send first transactions for the customers')
+    args = parser.parse_args()
+
+    generate_customers(args.num_customers)
+
+    if args.sendTxns:
+        subprocess.call(['python', 'send_first_transactions.py'])
+
+if __name__ == '__main__':
+    main()
+```
+
+### send_first_transactions.py
+
+```python
+from pymongo import MongoClient
+from faker import Faker
+
+def send_transactions():
+    fake = Faker()
+    client = MongoClient('localhost', 27017)
+    db = client.mydatabase
+    customers = db.customers.find()
+
+    for customer in customers:
+        transaction = {
+            'customer_id': customer['_id'],
+            'amount': fake.random_number(digits=5),
+            'date': fake.date_time_this_year()
+        }
+        db.transactions.insert_one(transaction)
+
+    client.close()
+
+if __name__ == '__main__':
+    send_transactions()
+```
+
+---
