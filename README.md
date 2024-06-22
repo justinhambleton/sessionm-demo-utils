@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project generates random customer data against a specific SessionM demo environment and, optionally, sends a first transaction to a randomized percentage of the newly generated customers. The project is designed to be run exclusively from the `generate_customer.py` script, along wih the arguments outlined below.
+The purpose of this project is to generate random customer profile data within a specific SessionM demo environment. Additionally, this project can optionally send a first transaction to a randomized percentage of the newly generated customers. The project is designed to be run exclusively from the `generate_customer.py` script, along wih the arguments outlined below.
 
 ## Table of Contents
 
@@ -85,11 +85,11 @@ This script accepts important command-line arguments to customize its behavior. 
 
 This is the main script for generating random customer data. It accepts command-line arguments to control the number of customers generated and whether to invoke the transaction script. It includes an important setting that determines the range of new customer profiles created. This range is always random and between a min and max value. The max value is the most important setting to pay attention to. It is recommended this never exceed 500.
 
-This script can run indepdently and without generating transactions so long as the --sendTxns argument is not included when the script is invoked (see usage example above).
+This script can run indepdently and without generating transactions so long as the `--sendTxns` argument is not included when the script is invoked (see usage example above).
 
 ### send_first_transactions.py
 
-This script is only invoked by `generate_customer.py` when the `--sendTxns` argument is included. This script handles sending first transactions to a randomized percentage of the newly generated customers. By default, the script only sends transactions to a randomized 40% of the new customer profiles. It is not a realistic scenario for 100% of new customers to perform a first transaction. This setting can be set to 100% if used for testing purposes and not to simulate real-world transaction behavior.
+This script is only invoked by `generate_customer.py` when the `--sendTxns` argument is included. This script handles sending first transactions to a randomized percentage of the newly generated customers. By default, the script only sends transactions to a randomized selection of 40% of the new customer profiles. It is not a realistic scenario for 100% of new customers to perform a first transaction. This setting can 100% if intended to be used for testing purposes and not to simulate real-world transaction behavior.
 
 ## Contributing
 
