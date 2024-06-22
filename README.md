@@ -4,7 +4,7 @@
 
 The purpose of this project is to generate random customer profiles within a specific SessionM demo environment. Additionally, this project can optionally send a first transaction to a randomized percentage of the newly generated customers. The project is designed to be run exclusively from the `generate_customer.py` script, along wih the arguments outlined below.
 
-Importantly, when this script is run, it expects a `--context` argument which determines which SessionM demo environment the script will execute against. Currently, this project is configured to only work with one of three demo environment, denoted by their argument values: retail, qsr or fuel. Each of the three contexts have specific data dictionaries for the customer profiles, allowing them to be further customized based on the customer data model within the respective demo environment.
+Importantly, when this script is run, it expects a `--context` argument which determines which SessionM demo environment the script will execute against. Currently, this project is configured to only work with one of three demo environments, denoted by the argument values: retail, qsr or fuel. Each of the three contexts have specific data dictionaries for the customer profiles, allowing them to be further customized based on the customer data model within the respective demo environment.
 
 ## Table of Contents
 
