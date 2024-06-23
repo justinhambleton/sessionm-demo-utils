@@ -61,6 +61,7 @@ This script accepts important command-line arguments to customize its behavior. 
 ### Arguments
 - `--context` (required): Specifies the demo environment context. Can only be one of: retail, qsr or fuel.
 - `--sendTxns` (optional): If included, invokes the `send_first_transactions.py` script to send first transactions to a randomized percentage of the the generated customers.
+- `--locale` (required): Informs the Faker function to use a specific locale when randomly generating dat. Can be one of: en_US, es_MX or pt_PT
 - `--enableLogging` (optional): If included, enables logging, which writes a JSON file for generate_customers and, if enabled, send_first_transactions.
 
 ### Example Usage for generate_customer.py
@@ -71,10 +72,10 @@ This script accepts important command-line arguments to customize its behavior. 
    python generate_customers.py --context qsr --sendTxns --enableLogging
    ```
 
-2. **Generate Retail Customers with first transactions and without logging**:
+2. **Generate Retail Customers with first transactions with a Spanish/Mexico locale and without logging**:
 
    ```sh
-   python generate_customers.py --context retail --sendTxns
+   python generate_customers.py --context retail --local es_MX --sendTxns
    ```
 
 3. **Generate QSR Customers without first transactions and without logging**:

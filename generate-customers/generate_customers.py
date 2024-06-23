@@ -44,8 +44,6 @@ def setup_logging():
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
 
-fake = Faker()
-
 # Function to generate a random phone number
 def generate_phone_number():
     return f'+1-{random.randint(100,999)}-{random.randint(100,999)}-{random.randint(1000,9999)}'
@@ -151,7 +149,7 @@ def generate_customer_data(context):
     return base_data
 
 # Generate random data
-async def generate_and_send_data(context, env_vars, enable_logging):
+async def generate_and_send_data(context, env_vars, enable_logging, locale):
     auth = BasicAuth(login=env_vars['USERNAME'], password=env_vars['PASSWORD'])
     api_url = env_vars['HOST'] + f'/priv/v1/apps/{env_vars["USERNAME"]}/users'
     mongo_client = MongoClient(env_vars['MONGO_URI'])
@@ -166,7 +164,7 @@ async def generate_and_send_data(context, env_vars, enable_logging):
         # --------------------------- VERY IMPORTANT SETTING  ---------------------------
         # This determines the min and max number of customer profiles that will be generated
         # DO NOT EXCEED MAX OF 500
-        for _ in range(random.randint(10, 100)):
+        for _ in range(random.randint(1, 10)):
             customer_data = generate_customer_data(context)
             data = {"user": customer_data}
             tasks.append(send_to_api(session, data, auth, api_url))
@@ -211,11 +209,13 @@ async def generate_and_send_data(context, env_vars, enable_logging):
 
         return [record["user_id"] for record in user_records]
 
-async def main(context, send_txns, enable_logging):
+async def main(context, send_txns, enable_logging, locale):
+    global fake
+    fake = Faker([locale])
     if enable_logging:
         setup_logging()
     env_vars = load_environment_variables(context)
-    user_ids = await generate_and_send_data(context, env_vars, enable_logging)
+    user_ids = await generate_and_send_data(context, env_vars, enable_logging, locale)
     if send_txns:
         from send_transactions import send_transactions
         await send_transactions(user_ids, context, enable_logging)
@@ -223,8 +223,9 @@ async def main(context, send_txns, enable_logging):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate and send customer data.')
     parser.add_argument('--context', required=True, choices=['retail', 'qsr', 'fuel'], help='Specify the context: retail, qsr, or fuel')
+    parser.add_argument('--locale', required=True, choices=['en_US', 'es_MX', 'pt_PT'], help='Specify the locale: en_US, es_MX, pt_PT')
     parser.add_argument('--sendTxns', action='store_true', help='Send transactions after creating customers')
     parser.add_argument('--enableLogging', action='store_true', help='Enable logging')
     args = parser.parse_args()
 
-    asyncio.run(main(args.context, args.sendTxns, args.enableLogging))
+    asyncio.run(main(args.context, args.sendTxns, args.enableLogging, args.locale))
