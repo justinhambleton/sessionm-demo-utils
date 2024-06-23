@@ -1,25 +1,20 @@
 # SessionM Demo Utils
 
 ## Overview
-
 This collection of scripts automates the random generation of customer profiles and transaction data and sends it to different SessionM demo environment endpoints, depending on the intended context. There are two primary scripts that can be run from the command line, or scheduled via cron or apscheduler:
 
 `generate_customer.py`
 `txn_randomizer.py`
 
-### generate_customer.py
 This collection of python scripts interacts with specific Sessionm demo environments to perform the following functions:
 - Randomly generates new customers profiles within a specified SessionM demo environment, and with an environment specific customer data dictionary
 - New customer profiles are generated based on a random value between a min and max value. This allows the script to generte a random number of users each time it runs, but never exceeding a max number of profiles so as to not degrade environment performance.
 - The `generate_customer.py` script can optionally send a first transaction to a randomized percentage of the newly generated customers.
 - The `txn_randomizer.py` is designed to pull a random selection of user_IDs from a MongoDB and sends transactions to that filtered list of customer profiles.
 
-These script make use of the [Faker Python Library](https://faker.readthedocs.io/en/master/), which randomizes most of the customer data, including first and last name, email address, and address. Further randomization is applied to the user_profile customer attributes to introduce variety in the new customers that are created.
-
-`generate_customer.py` expects a `--context` argument which determines which SessionM demo environment the script will execute against. Currently, this script is configured to only work with one of three demo environments, denoted by the argument values: retail, qsr or fuel. Each of the three contexts have specific data dictionaries for the customer profiles, allowing them to be further customized based on the customer data model within the respective demo environment.
+These scripts make use of the [Faker Python Library](https://faker.readthedocs.io/en/master/), which randomizes most of the customer data, including first and last name, email address, and address. Further randomization is applied to the user_profile customer attributes to introduce variety in the new customers that are created.
 
 ## Table of Contents
-
 - [Dependencies](#dependencies)
 - [MongoDB Setup](#mongodb-setup)
 - [Usage](#usage)
@@ -28,7 +23,6 @@ These script make use of the [Faker Python Library](https://faker.readthedocs.io
 - [License](#license)
 
 ## Dependencies
-
 Before running this project, ensure you have the following dependencies installed:
 
 - Python 3.x
@@ -67,11 +61,9 @@ pip install pymongo faker asyncio aiohttp argparse
 ## Usage
 
 ### Running the Script
-
 This script accepts important command-line arguments to customize its behavior. Before running the `generate_customer.py` script, familiarize yourself with the arguments below to ensure proper useage.
 
 ### Arguments
-
 - `--context` (required): Specifies the demo environment context. Can only be one of: retail, qsr or fuel.
 - `--sendTxns` (optional): If included, invokes the `send_first_transactions.py` script to send first transactions to a randomized percentage of the the generated customers.
 - `--enableLogging` (optional): If included, enables logging, which writes a JSON file for generate_customers and, if enabled, send_first_transactions.
@@ -115,6 +107,8 @@ This script accepts important command-line arguments to customize its behavior. 
 ### generate_customer.py
 
 This is the main script for generating random customer data. It accepts command-line arguments to control the number of customers generated and whether to invoke the transaction script. It includes an important setting that determines the range of new customer profiles created. This range is always random and between a min and max value. The max value is the most important setting to pay attention to. It is recommended this never exceed 500.
+
+`generate_customer.py` expects a `--context` argument which determines which SessionM demo environment the script will execute against. Currently, this script is configured to only work with one of three demo environments, denoted by the argument values: retail, qsr or fuel. Each of the three contexts have specific data dictionaries for the customer profiles, allowing them to be further customized based on the customer data model within the respective demo environment.
 
 This script can run indepdently and without generating transactions so long as the `--sendTxns` argument is not included when the script is invoked (see usage example above).
 
