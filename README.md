@@ -8,9 +8,13 @@ This collection of scripts automates the random generation of customer profiles 
 `txn_randomizer.py`
 
 ### generate_customer.py
-This script randomly generates new customers profiles within a specified SessionM demo environment. It generates new users based on a random value between a min and max value. This allows the script to generte a random number of users each time it runs, but never exceeding a max number of profiles to not degrade environment performance. The script can optionally send a first transaction to a randomized percentage of the newly generated customers. This script is designed to be run exclusively from the `generate_customer.py` script, along wih the arguments outlined below.
+This collection of python scripts interacts with specific Sessionm demo environments to perform the following functions:
+- Randomly generates new customers profiles within a specified SessionM demo environment, and with an environment specific customer data dictionary
+- New customer profiles are generated based on a random value between a min and max value. This allows the script to generte a random number of users each time it runs, but never exceeding a max number of profiles so as to not degrade environment performance.
+- The `generate_customer.py` script can optionally send a first transaction to a randomized percentage of the newly generated customers.
+- The `txn_randomizer.py` is designed to pull a random selection of user_IDs from a MongoDB and sends transactions to that filtered list of customer profiles.
 
-This script uses the Faker Python library, which randomizes most of the customer data, including first and last name, email address, and address. Further randomization is applied to the user_profile customer attributes to introduce variety in the new customers that are created.
+These script make use of the [Faker Python Library](https://faker.readthedocs.io/en/master/), which randomizes most of the customer data, including first and last name, email address, and address. Further randomization is applied to the user_profile customer attributes to introduce variety in the new customers that are created.
 
 `generate_customer.py` expects a `--context` argument which determines which SessionM demo environment the script will execute against. Currently, this script is configured to only work with one of three demo environments, denoted by the argument values: retail, qsr or fuel. Each of the three contexts have specific data dictionaries for the customer profiles, allowing them to be further customized based on the customer data model within the respective demo environment.
 
