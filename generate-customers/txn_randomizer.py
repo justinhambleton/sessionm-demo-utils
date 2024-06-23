@@ -3,9 +3,10 @@ import argparse
 import logging
 import random
 import asyncio
-from pymongo import MongoClient
+from pymongo import MongoClient, UpdateOne
+from datetime import datetime, timezone
 from dotenv import load_dotenv
-from send_transactions import send_first_transactions
+from send_transactions import send_transactions
 
 # Load and define environment variables based on argument
 def load_environment_variables(context):
@@ -68,14 +69,23 @@ async def randomize_transactions(context, enable_logging):
     total_collection_size = len(user_ids_with_timestamp)
 
     # Define the sample percentage
-    sample_percentage = 0.1  # Change this value as needed
+    sample_percentage = 0.4  # Change this value as needed
 
     # Retain only a percentage of the total collection
     sample_size = int(total_collection_size * sample_percentage)
-    sample_user_ids = [doc['user_id'] for doc in user_ids_with_timestamp[:sample_size]]
+    sample_users = user_ids_with_timestamp[:sample_size]
+    sample_user_ids = [doc['user_id'] for doc in sample_users]
 
     # Send transactions
-    await send_first_transactions(sample_user_ids, context, enable_logging)
+    await send_transactions(sample_user_ids, context, enable_logging)
+
+    # Update sampled users in MongoDB with the last transaction timestamp
+    lasttxn_timestamp = datetime.now(timezone.utc).isoformat()
+    updates = [
+        UpdateOne({'user_id': user['user_id']}, {'$set': {'lasttxn_timestamp': lasttxn_timestamp}})
+        for user in sample_users
+    ]
+    db[env_vars['MONGO_COLLECTION_NAME']].bulk_write(updates)
 
     # Print the total collection size and number of transactions sent
     print(f"Total collection size: {total_collection_size}")
