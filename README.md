@@ -1,6 +1,4 @@
-#SessionM Demo Utils
-
-# generate-customers/generate_customers.py
+# SessionM Demo Utils
 
 ## Overview
 
