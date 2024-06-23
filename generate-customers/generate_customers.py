@@ -164,7 +164,7 @@ async def generate_and_send_data(context, env_vars, enable_logging):
         user_records = []
 
         # --------------------------- VERY IMPORTANT SETTING  ---------------------------
-        # This determines the min and max number of customer profiles to generate
+        # This determines the min and max number of customer profiles that will be generated
         # DO NOT EXCEED MAX OF 500
         for _ in range(random.randint(1, 10)):
             customer_data = generate_customer_data(context)
@@ -217,8 +217,8 @@ async def main(context, send_txns, enable_logging):
     env_vars = load_environment_variables(context)
     user_ids = await generate_and_send_data(context, env_vars, enable_logging)
     if send_txns:
-        from send_first_transactions import send_first_transactions
-        await send_first_transactions(user_ids, context, enable_logging)
+        from send_transactions import send_transactions
+        await send_transactions(user_ids, context, enable_logging)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate and send customer data.')
