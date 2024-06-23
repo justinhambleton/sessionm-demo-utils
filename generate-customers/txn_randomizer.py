@@ -69,7 +69,7 @@ async def randomize_transactions(context, enable_logging):
     total_collection_size = len(user_ids_with_timestamp)
 
     # Define the sample percentage
-    sample_percentage = 0.4  # Change this value as needed
+    sample_percentage = random.uniform(0.1, 0.4)
 
     # Retain only a percentage of the total collection
     sample_size = int(total_collection_size * sample_percentage)
