@@ -30,11 +30,14 @@ Before running this project, ensure you have the following dependencies installe
 - Python 3.x
 - pymongo
 - faker
+- asyncio
+- aiohttp
+- argparse
 
 You can install the required Python packages using the following command:
 
 ```sh
-pip install pymongo faker
+pip install pymongo faker asyncio aiohttp argparse
 ```
 
 ## MongoDB Setup
