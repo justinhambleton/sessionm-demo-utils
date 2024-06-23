@@ -69,7 +69,7 @@ This script accepts important command-line arguments to customize its behavior. 
 - `--sendTxns` (optional): If included, invokes the `send_first_transactions.py` script to send first transactions to a randomized percentage of the the generated customers.
 - `--enableLogging` (optional): If included, enables logging, which writes a JSON file for generate_customers and, if enabled, send_first_transactions.
 
-### Example Usage
+### Example Usage for generate_customer.py
 
 1. **Generate QSR Customers with first transactions and with logging**:
 
@@ -87,6 +87,20 @@ This script accepts important command-line arguments to customize its behavior. 
 
    ```sh
    python generate_customers.py --context qsr
+   ```
+
+### Example Usage for txn_randomizer.py
+
+1. **Send transactions to a random sample of existing QSR customer profiles with logging**:
+
+   ```sh
+   python txn_randomizer.py --context qsr --enableLogging
+   ```
+
+2. **Send transactions to a random sample of existing Retail customer profiles without logging**:
+
+   ```sh
+   python txn_randomizer.py --context retail
    ```
 
 ## Scripts
