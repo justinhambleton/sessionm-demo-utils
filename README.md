@@ -1,11 +1,6 @@
 # SessionM Demo Utils
 
 ## Overview
-This collection of scripts automates the random generation of customer profiles and transaction data and sends it to different SessionM demo environment endpoints, depending on the intended context. There are two primary scripts that can be run from the command line, or scheduled via cron or apscheduler:
-
-`generate_customer.py`
-`txn_randomizer.py`
-
 This collection of python scripts interacts with specific Sessionm demo environments to perform the following functions:
 - Randomly generates new customers profiles within a specified SessionM demo environment, and with an environment specific customer data dictionary
 - New customer profiles are generated based on a random value between a min and max value. This allows the script to generte a random number of users each time it runs, but never exceeding a max number of profiles so as to not degrade environment performance.
