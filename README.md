@@ -2,12 +2,13 @@
 
 ## Overview
 This collection of python scripts interacts with specific Sessionm demo environments to perform the following functions:
-- Randomly generates new customers profiles within a specified SessionM demo environment, and with an environment specific customer data dictionary
-- New customer profiles are generated based on a random value between a min and max value. This allows the script to generte a random number of users each time it runs, but never exceeding a max number of profiles so as to not degrade environment performance.
-- The `generate_customer.py` script can optionally send a first transaction to a randomized percentage of the newly generated customers.
-- The `txn_randomizer.py` is designed to pull a random selection of user_IDs from a MongoDB and sends transactions to that filtered list of customer profiles.
 
-These scripts make use of the [Faker Python Library](https://faker.readthedocs.io/en/master/), which randomizes most of the customer data, including first and last name, email address, and address. Further randomization is applied to the user_profile customer attributes to introduce variety in the new customers that are created.
+- Randomly generate new customers profiles within a specified SessionM demo environment, and with a vertical-specific customer data dictionary for the user_profile object. A `--locale` can be specified to localize the user profile data (e.g. Spanish, Portuguese).
+- New customer profiles are generated based on a random value between a min and max value. This allows the script to generate a random number of users each time it runs, but never to exceed a max number of profiles so as to not degrade environment performance.
+- The `generate_customer.py` script can optionally send a first transaction to a randomized sample of the newly generated customers. This is to simulate the real-world scenario where not all new loyaly members transact. This can be dialed up or down as needed.
+- The `txn_randomizer.py` is designed to pull a random sample of user_IDs from a persistent data storage (MongoDB) and sends transactions to that random sample of customer profiles. Many elements within the transaction payload are randomized such as payment_channel, payment_type, amount, and store.
+
+These scripts make use of the [Faker Python Library](https://faker.readthedocs.io/en/master/), which randomizes most of the customer data, including first and last name, email address, and address. Further randomization is applied to the user_profile customer attributes to introduce variety in the custom profile attributes for the new customer profiles.
 
 ## Table of Contents
 - [Dependencies](#dependencies)
@@ -45,7 +46,7 @@ pip install pymongo faker asyncio aiohttp argparse
      mongod
      ```
 
-3. **Create the Database and Collection**:
+3. **Create the Databases**:
    - Open a MongoDB shell by running `mongo` in your terminal.
    - Authenticate as admin user
    - Create three new databases: retail_db, qsr_db and fuel_db
@@ -59,10 +60,10 @@ pip install pymongo faker asyncio aiohttp argparse
 This script accepts important command-line arguments to customize its behavior. Before running the `generate_customer.py` script, familiarize yourself with the arguments below to ensure proper useage.
 
 ### Arguments
-- `--context` (required): Specifies the demo environment context. Can only be one of: retail, qsr or fuel.
+- `--context` (required): Specifies the demo environment context. Must be one of: retail, qsr or fuel.
 - `--sendTxns` (optional): If included, invokes the `send_first_transactions.py` script to send first transactions to a randomized percentage of the the generated customers.
-- `--locale` (required): Informs the Faker function to use a specific locale when randomly generating dat. Can be one of: en_US, es_MX or pt_PT
-- `--enableLogging` (optional): If included, enables logging, which writes a JSON file for generate_customers and, if enabled, send_first_transactions.
+- `--locale` (required): Informs the Faker function to use a specific locale when randomly generating data. Can be any standard locale code but best to limit usage to one of: en_US, es_MX or pt_PT
+- `--enableLogging` (optional): Logging is implicily false by design. If this argument is included logging is enabled, which writes a JSON file to a local directory. Each script has it's own log and concatenates every request and response body for testing and diagnosis. For this reason, it's best to exclude this argument unless absolutely necessary. Depending on your environment, your will need to ensure your script has write permissions on a local directory.
 
 ### Example Usage for generate_customer.py
 
@@ -100,9 +101,11 @@ This script accepts important command-line arguments to customize its behavior. 
 
 ## Scripts
 
+> All scripts runs asynchronously! Be mindful of the important setting thresholds mentioned below to avoid negatively impacting an environment.
+
 ### generate_customer.py
 
-This is the main script for generating random customer data. It accepts command-line arguments to control the number of customers generated and whether to invoke the transaction script. It includes an important setting that determines the range of new customer profiles created. This range is always random and between a min and max value. The max value is the most important setting to pay attention to. It is recommended this never exceed 500.
+This is the main script for generating random customer data. It accepts command-line arguments to control the environment context, locale, logging and whether transactions should be sent after the customer profiles are created. The script includes an important setting that determines the range of new customer profiles created each time the script runs. This range is a randomized value between a min and max value. The max value is the most important setting to pay attention to. It is recommended this never exceed 500 to avoid negatively impacting an environment.
 
 `generate_customer.py` expects a `--context` argument which determines which SessionM demo environment the script will execute against. Currently, this script is configured to only work with one of three demo environments, denoted by the argument values: retail, qsr or fuel. Each of the three contexts have specific data dictionaries for the customer profiles, allowing them to be further customized based on the customer data model within the respective demo environment.
 
