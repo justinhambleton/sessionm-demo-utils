@@ -66,7 +66,7 @@ This is the main script for generating random customer data. It accepts command-
 
 `generate_customer.py` expects a `--context` argument which determines which SessionM demo environment the script will execute against. Currently, this script is configured to only work with one of three demo environments, denoted by the argument values: retail, qsr or fuel. Each of the three contexts have specific data dictionaries for the customer profiles, allowing them to be further customized based on the customer data model within the respective demo environment.
 
-This script can run to only generate customer profiles and without generating transactions so long as the `--sendTxns` argument is not included when the script is invoked (see usage example above).
+This script can run to only generate customer profiles and without generating transactions so long as the `--sendTxns` argument is not included when the script is invoked (see usage example below).
 
 ### txn_randomizer.py
 The purpose of this script is to send transactions against a randomized collection of existing users. The intent is to simulate realistic transaction activity against a random sample size of existing customer profiles. This script accepts the same `--context` argument as generate_customers.py. The script reads from the designated MongoDB and returns the entire collection. The full collection is then reduced to a sample size between 10% and 40%, which are then sent to `send_transactions.py`
