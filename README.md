@@ -84,8 +84,8 @@ Similarly, `txn_randomizer.py` invokes send_transactions.py once the randomized 
 
 ## Usage
 
-### Running the Script
-This main `generate_customer.py` script accepts important command-line arguments to customize its behavior. Before running the `generate_customer.py` script, familiarize yourself with the arguments below to ensure proper useage.
+### Running the main `generate_customer.py` Script
+The main `generate_customer.py` script accepts important command-line arguments to customize its behavior. Before running the `generate_customer.py` script, familiarize yourself with the arguments below to ensure proper useage.
 
 ### Arguments
 - `--context` (required): Specifies the demo environment context. Must be one of: retail, qsr or fuel.
