@@ -14,7 +14,7 @@ These scripts make use of the [Faker Python Library](https://faker.readthedocs.i
 ## Table of Contents
 - [Python Dependencies](#python-dependencies)
 - [MongoDB Setup](#mongodb-setup)
-- [Scripts](#scripts)
+- [The Scripts](#the-scripts)
 - [Usage](#usage)
   - [Arguments](#arguments)
 - [Contributing](#contributing)
@@ -56,7 +56,7 @@ pip install pymongo faker asyncio aiohttp argparse
    - Use openssl to generate base64 passwords for each user: ❯ openssl rand -base64 48
    - Collections will be created upon the first run of the script
 
-## Scripts
+## The Scripts
 
 > All scripts runs asynchronously! Be mindful of the important setting thresholds mentioned below to avoid negatively impacting an environment.
 
