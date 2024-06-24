@@ -54,10 +54,36 @@ pip install pymongo faker asyncio aiohttp argparse
    - Use openssl to generate base64 passwords for each user: ❯ openssl rand -base64 48
    - Collections will be created upon the first run of the script
 
+## Scripts
+
+> All scripts runs asynchronously! Be mindful of the important setting thresholds mentioned below to avoid negatively impacting an environment.
+
+### generate_customer.py
+
+This is the main script for generating random customer data. It accepts command-line arguments to control the environment context, locale, logging and whether transactions should be sent after the customer profiles are created. The script includes an important setting that determines the range of new customer profiles created each time the script runs. This range is a randomized value between a min and max value. The max value is the most important setting to pay attention to. It is recommended the range max never exceed 500 to avoid negatively impacting an environment.
+
+> To find this range setting in `generate_customer.py` go to line 167: `for _ in range(random.randint(1, 10)):`
+
+`generate_customer.py` expects a `--context` argument which determines which SessionM demo environment the script will execute against. Currently, this script is configured to only work with one of three demo environments, denoted by the argument values: retail, qsr or fuel. Each of the three contexts have specific data dictionaries for the customer profiles, allowing them to be further customized based on the customer data model within the respective demo environment.
+
+This script can run to only generate customer profiles and without generating transactions so long as the `--sendTxns` argument is not included when the script is invoked (see usage example above).
+
+### txn_randomizer.py
+The purpose of this script is to send transactions against a randomized collection of existing users. The intent is to simulate realistic transaction activity against a random sample size of existing customer profiles. This script accepts the same `--context` argument as generate_customers.py. The script reads from the designated MongoDB and returns the entire collection. The full collection is then reduced to a sample size between 10% and 40%, which are then sent to `send_transactions.py`
+
+> To find this range setting in `txn_randomizer.py`, go to line 72: `sample_percentage = random.uniform(0.1, 0.4)`
+
+### send_transactions.py
+This is a utility script used by `generate_customer.py` and `txn_randomizer.py`
+
+When the `--sendTxns` argument is used with the `generate_customer.py` script, first transactions will be sent to a randomized percentage of the newly generated customers. By default, the script only sends transactions to a randomized selection of 40% of the new customer profiles. It is not a realistic scenario for 100% of new customers to perform a first transaction. This setting can 100% if intended to be used for testing purposes and not to simulate real-world transaction behavior.
+
+Similarly, `txn_randomizer.py` invokes send_transactions.py once the randomized sample size is selected. When logging is enabled, this script will only write the response status to the log file since the SessionM POS API does not return anything in the response other than a "200" code if the response is successful. Because of this, the log file also include the request JSON body to aid in troubleshooting.
+
 ## Usage
 
 ### Running the Script
-This script accepts important command-line arguments to customize its behavior. Before running the `generate_customer.py` script, familiarize yourself with the arguments below to ensure proper useage.
+This main `generate_customer.py` script accepts important command-line arguments to customize its behavior. Before running the `generate_customer.py` script, familiarize yourself with the arguments below to ensure proper useage.
 
 ### Arguments
 - `--context` (required): Specifies the demo environment context. Must be one of: retail, qsr or fuel.
@@ -98,32 +124,6 @@ This script accepts important command-line arguments to customize its behavior. 
    ```sh
    python txn_randomizer.py --context retail
    ```
-
-## Scripts
-
-> All scripts runs asynchronously! Be mindful of the important setting thresholds mentioned below to avoid negatively impacting an environment.
-
-### generate_customer.py
-
-This is the main script for generating random customer data. It accepts command-line arguments to control the environment context, locale, logging and whether transactions should be sent after the customer profiles are created. The script includes an important setting that determines the range of new customer profiles created each time the script runs. This range is a randomized value between a min and max value. The max value is the most important setting to pay attention to. It is recommended the range max never exceed 500 to avoid negatively impacting an environment.
-
-> To find this range setting in `generate_customer.py` go to line 167: `for _ in range(random.randint(1, 10)):`
-
-`generate_customer.py` expects a `--context` argument which determines which SessionM demo environment the script will execute against. Currently, this script is configured to only work with one of three demo environments, denoted by the argument values: retail, qsr or fuel. Each of the three contexts have specific data dictionaries for the customer profiles, allowing them to be further customized based on the customer data model within the respective demo environment.
-
-This script can run to only generate customer profiles and without generating transactions so long as the `--sendTxns` argument is not included when the script is invoked (see usage example above).
-
-### txn_randomizer.py
-The purpose of this script is to send transactions against a randomized collection of existing users. The intent is to simulate realistic transaction activity against a random sample size of existing customer profiles. This script accepts the same `--context` argument as generate_customers.py. The script reads from the designated MongoDB and returns the entire collection. The full collection is then reduced to a sample size between 10% and 40%, which are then sent to `send_transactions.py`
-
-> To find this range setting in `txn_randomizer.py`, go to line 72: `sample_percentage = random.uniform(0.1, 0.4)`
-
-### send_transactions.py
-This is a utility script used by `generate_customer.py` and `txn_randomizer.py`
-
-When the `--sendTxns` argument is used with the `generate_customer.py` script, first transactions will be sent to a randomized percentage of the newly generated customers. By default, the script only sends transactions to a randomized selection of 40% of the new customer profiles. It is not a realistic scenario for 100% of new customers to perform a first transaction. This setting can 100% if intended to be used for testing purposes and not to simulate real-world transaction behavior.
-
-Similarly, `txn_randomizer.py` invokes send_transactions.py once the randomized sample size is selected. When logging is enabled, this script will only write the response status to the log file since the SessionM POS API does not return anything in the response other than a "200" code if the response is successful. Because of this, the log file also include the request JSON body to aid in troubleshooting.
 
 ## Contributing
 
