@@ -113,21 +113,7 @@ The main `generate_customer.py` script accepts important command-line arguments 
    python generate_customers.py --context qsr
    ```
 
-### Example Usage for txn_randomizer.py
-
-1. **Send transactions to a random sample of existing QSR customer profiles with logging**:
-
-   ```sh
-   python txn_randomizer.py --context qsr --enableLogging
-   ```
-
-2. **Send transactions to a random sample of existing Retail customer profiles without logging**:
-
-   ```sh
-   python txn_randomizer.py --context retail
-   ```
-
-### Running the `txn_randomizer.py` Script
+### Using the `txn_randomizer.py` Script
 This script requires access to the same MongoDB used in the `generate_customer.py` script. This script will grab the entire collection and then apply filtering and randomization to the result_set in order to only send transactions to the sample of total customers created from the `generate_customer.py` script.
 
 > The sample percentage is defined on line 72: sample_percentage = random.uniform(0.1, 0.4)
@@ -140,7 +126,7 @@ The `txn_randomizer.py` invokes the `send_transactions.py` script, which handles
 - `--context` (required): Specifies the demo environment context. Must be one of: retail, qsr or fuel.
 - `--enableLogging` (optional): Logging is implicily false by design. If this argument is included logging is enabled, which writes a JSON file to a local directory. Each script has it's own log and concatenates every request and response body for testing and diagnosis. For this reason, it's best to exclude this argument unless absolutely necessary. Depending on your environment, your will need to ensure your script has write permissions on a local directory.
 
-### Example Usage for generate_customer.py
+### Example Usage for txn_randomizer.py
 
 1. **Generate Random Transactions for the Existing QSR Customers with logging**:
 
