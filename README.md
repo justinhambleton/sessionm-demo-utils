@@ -12,22 +12,16 @@ This collection of python scripts interacts with specific Sessionm demo environm
 These scripts make use of the [Faker Python Library](https://faker.readthedocs.io/en/master/), which randomizes most of the customer data, including first and last name, email address, and address. Further randomization is applied to the user_profile customer attributes to introduce variety in the custom profile attributes for the new customer profiles.
 
 ## Table of Contents
-- [Environment Dependencies](#environment-dependencies)
-- [Python Dependencies](#dependencies)
+- [Python Dependencies](#python-dependencies)
 - [MongoDB Setup](#mongodb-setup)
+- [Scripts](#scripts)
 - [Usage](#usage)
   - [Arguments](#arguments)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Environment Dependencies
-
-1. **Python Virtual Environment**:
-Python version 3.0
-venv: Python's built-in module to create virtual environments
-
 ## Python Dependencies
-Before running this project, ensure you have the following dependencies installed:
+Before running this project, ensure you have the following Python dependencies installed:
 
 - Python 3.x
 - pymongo
