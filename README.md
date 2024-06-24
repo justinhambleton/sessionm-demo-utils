@@ -84,7 +84,7 @@ Similarly, `txn_randomizer.py` invokes send_transactions.py once the randomized 
 
 ## Usage
 
-### Running the main `generate_customer.py` Script
+### Using the main `generate_customer.py` Script
 The main `generate_customer.py` script accepts important command-line arguments to customize its behavior. Before running the `generate_customer.py` script, familiarize yourself with the arguments below to ensure proper useage.
 
 ### Arguments
@@ -122,6 +122,33 @@ The main `generate_customer.py` script accepts important command-line arguments 
    ```
 
 2. **Send transactions to a random sample of existing Retail customer profiles without logging**:
+
+   ```sh
+   python txn_randomizer.py --context retail
+   ```
+
+### Running the `txn_randomizer.py` Script
+This script requires access to the same MongoDB used in the `generate_customer.py` script. This script will grab the entire collection and then apply filtering and randomization to the result_set in order to only send transactions to the sample of total customers created from the `generate_customer.py` script.
+
+> The sample percentage is defined on line 72: sample_percentage = random.uniform(0.1, 0.4)
+
+Depending on the use, this range can be increased to 100%, just be mindful that the `send_transactions.py` script runs asynchronously. The `send_transactions.py` also has protections in place to ensure a max number of transactions are never exceeded when calling the SessionM CLOUDPOS endpoint.
+
+The `txn_randomizer.py` invokes the `send_transactions.py` script, which handles randomization of the transaction payload (e.g. payment_type, payment_channel).
+
+### Arguments
+- `--context` (required): Specifies the demo environment context. Must be one of: retail, qsr or fuel.
+- `--enableLogging` (optional): Logging is implicily false by design. If this argument is included logging is enabled, which writes a JSON file to a local directory. Each script has it's own log and concatenates every request and response body for testing and diagnosis. For this reason, it's best to exclude this argument unless absolutely necessary. Depending on your environment, your will need to ensure your script has write permissions on a local directory.
+
+### Example Usage for generate_customer.py
+
+1. **Generate Random Transactions for the Existing QSR Customers with logging**:
+
+   ```sh
+   python txn_randomizer.py --context qsr --enableLogging
+   ```
+
+2. **Generate Random Transactions for the Existing Retail Customers without logging**:
 
    ```sh
    python txn_randomizer.py --context retail
