@@ -3,7 +3,8 @@
 ## Overview
 This collection of python scripts interacts with specific Sessionm demo environments to perform the following functions:
 
-- Randomly generate new customers profiles within a specified SessionM demo environment, and with a vertical-specific customer data dictionary for the user_profile object. A `--locale` can be specified to localize the user profile data (e.g. Spanish, Portuguese).
+- Randomly generate new customers profiles within a specified SessionM demo environment, and with a vertical-specific customer data dictionary for the user_profile object.
+- A `--locale` argument can be specified to localize the random user profile data (e.g. Spanish, Portuguese). This will produce names and addresses that are localized to the region. Most standard locale codes work, just be mindful of address formats in different countries.
 - New customer profiles are generated based on a random value between a min and max value. This allows the script to generate a random number of users each time it runs, but never to exceed a max number of profiles so as to not degrade environment performance.
 - The `generate_customer.py` script can optionally send a first transaction to a randomized sample of the newly generated customers. This is to simulate the real-world scenario where not all new loyaly members transact. This can be dialed up or down as needed.
 - The `txn_randomizer.py` is designed to pull a random sample of user_IDs from a persistent data storage (MongoDB) and sends transactions to that random sample of customer profiles. Many elements within the transaction payload are randomized such as payment_channel, payment_type, amount, and store.
@@ -11,14 +12,21 @@ This collection of python scripts interacts with specific Sessionm demo environm
 These scripts make use of the [Faker Python Library](https://faker.readthedocs.io/en/master/), which randomizes most of the customer data, including first and last name, email address, and address. Further randomization is applied to the user_profile customer attributes to introduce variety in the custom profile attributes for the new customer profiles.
 
 ## Table of Contents
-- [Dependencies](#dependencies)
+- [Environment Dependencies](#environment-dependencies)
+- [Python Dependencies](#dependencies)
 - [MongoDB Setup](#mongodb-setup)
 - [Usage](#usage)
   - [Arguments](#arguments)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Dependencies
+## Environment Dependencies
+
+1. **Python Virtual Environment**:
+Python version 3.0
+venv: Python's built-in module to create virtual environments
+
+## Python Dependencies
 Before running this project, ensure you have the following dependencies installed:
 
 - Python 3.x
