@@ -76,7 +76,7 @@ The purpose of this script is to send transactions against a randomized collecti
 > To find this range setting in `txn_randomizer.py`, go to line 72: `sample_percentage = random.uniform(0.1, 0.4)`
 
 ### send_transactions.py
-This is a utility script used by `generate_customer.py` and `txn_randomizer.py`
+This is a utility script used by `generate_customer.py` and `txn_randomizer.py` and is not to be executed directly.
 
 When the `--sendTxns` argument is used with the `generate_customer.py` script, first transactions will be sent to a randomized percentage of the newly generated customers. By default, the script only sends transactions to a randomized selection of 40% of the new customer profiles. It is not a realistic scenario for 100% of new customers to perform a first transaction. This setting can 100% if intended to be used for testing purposes and not to simulate real-world transaction behavior.
 
