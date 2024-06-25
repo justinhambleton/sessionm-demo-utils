@@ -8,11 +8,11 @@ This collection of python scripts interact with specific Sessionm demo environme
   - Multi-accounting - this script is a bit tricky and involves randomly generating a series of users with only slight modifications to the email address. This attempts to simulate loyalty accounts that have been created by the same person (or same group of people, in the case of a coordinated cyber attack). It accepts an argument to control how many customer profiles are created. Simulating cyber attacks requires a burst of 100 or more customer profiles.
   - Shared Accounts - simulates a situation where the same loyalty identifier is used on multiple transactions at different stores in the same day. Transactions with the same user_id are sent to different store_ids all within x minutes of one another.
 
-- Campaigns
+- Campaigns - a collection of scripts intended to interact with campaigns, and their related content:
   - Get Campaign Tiles by User ID - this script allows you to return campaign tiles of a specific type for a specific user. This aids in quickly testing targeted campaign tiles, and their contents, without the need for a frontend.
   - Get Campaigns by User ID - retruns all campaigns for a user_id but allows for additional filtering by using specific arguments
 
-- Customers
+- Customers - a collection of scripts intended to simulate the origin of life of a new customer, and the aging of that customer profile over time:
   - Randomly generate new customers profiles within a specified SessionM demo environment, and with a vertical-specific customer data dictionary for the user_profile object.
   - A `--locale` argument can be specified to localize the random user profile data (e.g. Spanish, Portuguese). This will produce names and addresses that are localized to the region. Most standard locale codes work, just be mindful of address formats in different countries.
   - New customer profiles are generated based on a random value between a min and max value. This allows the script to generate a random number of users each time it runs, but never to exceed a max number of profiles so as to not degrade environment performance.
