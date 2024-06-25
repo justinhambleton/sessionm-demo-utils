@@ -1,13 +1,23 @@
 # SessionM Demo Utils
 
 ## Overview
-This collection of python scripts interacts with specific Sessionm demo environments to perform the following functions:
+This collection of python scripts interact with specific Sessionm demo environments. They are organized into the following categories:
 
-- Randomly generate new customers profiles within a specified SessionM demo environment, and with a vertical-specific customer data dictionary for the user_profile object.
-- A `--locale` argument can be specified to localize the random user profile data (e.g. Spanish, Portuguese). This will produce names and addresses that are localized to the region. Most standard locale codes work, just be mindful of address formats in different countries.
-- New customer profiles are generated based on a random value between a min and max value. This allows the script to generate a random number of users each time it runs, but never to exceed a max number of profiles so as to not degrade environment performance.
-- The `generate_customer.py` script can optionally send a first transaction to a randomized sample of the newly generated customers. This is to simulate the real-world scenario where not all new loyaly members transact. This can be dialed up or down as needed.
-- The `txn_randomizer.py` is designed to pull a random sample of user_IDs from a persistent data storage (MongoDB) and sends transactions to that random sample of customer profiles. Many elements within the transaction payload are randomized such as payment_channel, payment_type, amount, and store.
+- Anomaly Detection - a collection of scripts intended to trigger the three primary anomaly detection use cases:
+  - Frequent Transactions - simulates frequent transactions by a single user in a single day. The current daily threshold for transactions by a single user in a single day is 5. This script is currently configured to burst 10 transactions for a random sample of 0.1% of the total customer population.
+  - Multi-accounting - this script is a bit tricky and involves randomly generating a series of users with only slight modifications to the email address. This attempts to simulates loyalty accounts that have been created by the same person (or same group of people, in the case of a coordinated cyber attack).
+  - Shared Accounts - simulates a situation where the same loyalty identifier is used on multiple transactions at different stores in the same day. Transactions with the same user_id are sent to different store_ids all within x minutes of one another.
+
+- Campaigns
+  - Get Campaign Tiles by User ID - this script allows you to return campaign tiles of a specific type for a specific user. This aids in quickly testing targeted campaign tiles, and their contents, without the need for a frontend.
+  - Get Campaigns by User ID - retruns all campaigns for a user_id but allows for additional filtering by using specific arguments
+
+- Customers
+  - Randomly generate new customers profiles within a specified SessionM demo environment, and with a vertical-specific customer data dictionary for the user_profile object.
+  - A `--locale` argument can be specified to localize the random user profile data (e.g. Spanish, Portuguese). This will produce names and addresses that are localized to the region. Most standard locale codes work, just be mindful of address formats in different countries.
+  - New customer profiles are generated based on a random value between a min and max value. This allows the script to generate a random number of users each time it runs, but never to exceed a max number of profiles so as to not degrade environment performance.
+  - The `generate_customer.py` script can optionally send a first transaction to a randomized sample of the newly generated customers. This is to simulate the real-world scenario where not all new loyaly members transact. This can be dialed up or down as needed.
+  - The `txn_randomizer.py` is designed to pull a random sample of user_IDs from a persistent data storage (MongoDB) and sends transactions to that random sample of customer profiles. Many elements within the transaction payload are randomized such as payment_channel, payment_type, amount, and store.
 
 These scripts make use of the [Faker Python Library](https://faker.readthedocs.io/en/master/), which randomizes most of the customer data, including first and last name, email address, and address. Further randomization is applied to the user_profile customer attributes to introduce variety in the custom profile attributes for the new customer profiles.
 
@@ -60,7 +70,7 @@ pip install pymongo faker asyncio aiohttp argparse
 
 > All scripts runs asynchronously! Be mindful of the important setting thresholds mentioned below to avoid negatively impacting an environment.
 
-### generate-customers/generate_customer.py
+### customers/generate_customer.py
 
 This is the main script for generating random customer data. It accepts command-line arguments to control the environment context, locale, logging and whether transactions should be sent after the customer profiles are created. The script includes an important setting that determines the range of new customer profiles created each time the script runs. This range is a randomized value between a min and max value. The max value is the most important setting to pay attention to. It is recommended the range max never exceed 500 to avoid negatively impacting an environment.
 
@@ -70,7 +80,7 @@ This is the main script for generating random customer data. It accepts command-
 
 This script can run to only generate customer profiles and without generating transactions so long as the `--sendTxns` argument is not included when the script is invoked (see usage example below).
 
-### txn_randomizer.py
+### customers/txn_randomizer.py
 The purpose of this script is to send transactions against a randomized collection of existing users. The intent is to simulate realistic transaction activity against a random sample size of existing customer profiles. This script accepts the same `--context` argument as generate_customers.py. The script reads from the designated MongoDB and returns the entire collection. The full collection is then reduced to a sample size between 10% and 40%, which are then sent to `send_transactions.py`
 
 > To find this range setting in `txn_randomizer.py`, go to line 72: `sample_percentage = random.uniform(0.1, 0.4)`
