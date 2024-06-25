@@ -1,7 +1,9 @@
 # SessionM Demo Utils
 
 ## Overview
-This collection of python scripts interact with specific Sessionm demo environments. They are organized into the following categories:
+This collection of python scripts are designed to interact with specific Sessionm demo environments, primarily to generate randomized customer and transaction data in bulk. These scripts also aid in diagnosing campaign specific use cases as well as simulate anomalous conditions for SessionM's Anamoly Detection reporting.
+
+The scripts are organized into the following categories:
 
 - Anomaly Detection - a collection of scripts intended to trigger the three primary anomaly detection use cases:
   - Frequent Transactions - simulates frequent transactions by a single user in a single day. The current daily threshold for transactions by a single user in a single day is 5. This script is currently configured to burst 10 transactions for a random sample of 0.1% of the total customer population in a given demo environment.

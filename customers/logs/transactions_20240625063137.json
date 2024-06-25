@@ -1,0 +1,432 @@
+[
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "c1cbbadd-3ffa-4697-a946-65a3f5a19116",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "IN-STORE",
+                "pos_employee_id": "234234",
+                "transaction_id": "97d7e01b-c414-402d-9a4c-a33595deec26",
+                "guest_count": 1,
+                "subtotal": 48.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 48.0,
+                        "subtotal": 48.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "2c053c8f-1d45-4404-ac09-274a64c002c7",
+                        "amount": 48.0,
+                        "type": "Cash",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d811638-32f7-11ef-93f2-211aac110003",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "b824c5a6-6095-4da1-81eb-cde44b481243",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "MOBILE",
+                "pos_employee_id": "234234",
+                "transaction_id": "7a9fcf04-a604-4de2-89f0-612c4e8d8c8f",
+                "guest_count": 1,
+                "subtotal": 56.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 56.0,
+                        "subtotal": 56.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "ed68f46e-e6a9-4b55-97a1-52c2dbb0280c",
+                        "amount": 56.0,
+                        "type": "Credit",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d7e7c7a-32f7-11ef-8f35-13fcac110003",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 500,
+        "response": ""
+    },
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "d39328c9-dd86-4cf0-87da-f109225fe6f7",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "MOBILE",
+                "pos_employee_id": "234234",
+                "transaction_id": "45ebe56d-0d43-471e-af1c-2131ab6482e5",
+                "guest_count": 1,
+                "subtotal": 67.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 67.0,
+                        "subtotal": 67.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "81c1838c-6750-40e6-98de-0959663cf6fc",
+                        "amount": 67.0,
+                        "type": "Cash",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d80a360-32f7-11ef-855c-6e95ac110003",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "7de7f49b-2249-407b-8f16-8c47ed9c32c8",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "IN-STORE",
+                "pos_employee_id": "234234",
+                "transaction_id": "b3c1daff-f136-494d-b58d-9b43b2d04aff",
+                "guest_count": 1,
+                "subtotal": 92.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 92.0,
+                        "subtotal": 92.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "9f463960-6760-45c8-ba97-8adc445bafc8",
+                        "amount": 92.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d7ee200-32f7-11ef-8241-61dfac110003",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "9b9c025b-4b18-41f7-b6d5-17a443bbfd4b",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "MOBILE",
+                "pos_employee_id": "234234",
+                "transaction_id": "d8e0eb3f-7723-42a0-b249-7af352993b3c",
+                "guest_count": 1,
+                "subtotal": 39.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 39.0,
+                        "subtotal": 39.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "d2dfe4ca-4fba-4607-8bf1-4b358dd865b2",
+                        "amount": 39.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d82d91e-32f7-11ef-95d4-9d42ac110005",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "c5053bd5-61cd-48e5-a27f-0c56bf16b476",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "IN-STORE",
+                "pos_employee_id": "234234",
+                "transaction_id": "9af31c0f-21c1-49f4-8172-cbe1b9b8c7dd",
+                "guest_count": 1,
+                "subtotal": 89.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 89.0,
+                        "subtotal": 89.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "f55d38b0-3bd1-487a-8a80-cd0c04508544",
+                        "amount": 89.0,
+                        "type": "Credit",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d8070b6-32f7-11ef-90ad-da24ac110004",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 500,
+        "response": ""
+    },
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "e47f4b60-d38d-437e-849e-c24067567714",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "IN-STORE",
+                "pos_employee_id": "234234",
+                "transaction_id": "a63aa860-0f0d-46da-a79a-b56b4bf35754",
+                "guest_count": 1,
+                "subtotal": 97.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 97.0,
+                        "subtotal": 97.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "b762f62d-6aec-4b3c-b699-b7918bb03ea7",
+                        "amount": 97.0,
+                        "type": "Cash",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d7f909c-32f7-11ef-9e2d-64d8ac110005",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 500,
+        "response": ""
+    },
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "7ee83a70-7c3a-44c5-b953-65ca7045929e",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "MOBILE",
+                "pos_employee_id": "234234",
+                "transaction_id": "bc0fe959-2c91-4980-a9da-0d322c41444a",
+                "guest_count": 1,
+                "subtotal": 82.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 82.0,
+                        "subtotal": 82.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "a00a6151-65a3-4c22-8b5f-d6b1dc124741",
+                        "amount": 82.0,
+                        "type": "Gift Card",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d8194b4-32f7-11ef-8d62-a035ac110003",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "7d6d93e1-90ba-4732-904e-dc0910f1a2dc",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "MOBILE",
+                "pos_employee_id": "234234",
+                "transaction_id": "937772bd-8435-4eba-a266-79d3195cb866",
+                "guest_count": 1,
+                "subtotal": 27.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 27.0,
+                        "subtotal": 27.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "a6f1cad2-e405-4cea-87e8-ae49899960d4",
+                        "amount": 27.0,
+                        "type": "Credit",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d7eda30-32f7-11ef-9414-95d5ac110003",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    },
+    {
+        "request_body": {
+            "store_id": "6A2FE030-08F8-44E0-842F-1D92A0874096",
+            "client_id": "02B8E29F-7475-436F-94AA-D631E3577A28",
+            "request_id": "5b063776-9f09-4609-8d18-66f2c89d422d",
+            "request_payload": {
+                "is_closed": true,
+                "is_voided": false,
+                "channel": "MOBILE",
+                "pos_employee_id": "234234",
+                "transaction_id": "efcbce51-3e0e-4b02-b954-301183786b72",
+                "guest_count": 1,
+                "subtotal": 73.0,
+                "tax_total": 0.0,
+                "open_time": "2024-06-25T13:31:35.550Z",
+                "modified_time": "2024-06-25T13:31:35.550Z",
+                "items": [
+                    {
+                        "line_id": "1",
+                        "item_id": "008884303989M",
+                        "quantity": 1,
+                        "unit_price": 73.0,
+                        "subtotal": 73.0,
+                        "tax_included": 0
+                    }
+                ],
+                "payments": [
+                    {
+                        "payment_id": "42928ca4-507a-4a84-9f9b-4475d99d2f10",
+                        "amount": 73.0,
+                        "type": "Cash",
+                        "payment_time": "2024-06-25T13:31:35.550Z",
+                        "user_id": "3d7eac72-32f7-11ef-9981-8e99ac110005",
+                        "user_id_type": "External_ID"
+                    }
+                ],
+                "discounts": [],
+                "transaction_type": "QSR_SALE"
+            }
+        },
+        "status": 200,
+        "response": "{\"status\":\"OK\",\"payload\":null,\"errors\":null}"
+    }
+]
