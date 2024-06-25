@@ -5,7 +5,7 @@ This collection of python scripts interact with specific Sessionm demo environme
 
 - Anomaly Detection - a collection of scripts intended to trigger the three primary anomaly detection use cases:
   - Frequent Transactions - simulates frequent transactions by a single user in a single day. The current daily threshold for transactions by a single user in a single day is 5. This script is currently configured to burst 10 transactions for a random sample of 0.1% of the total customer population in a given demo environment.
-  - Multi-accounting - this script is a bit tricky and involves randomly generating a series of users with only slight modifications to the email address. This attempts to simulates loyalty accounts that have been created by the same person (or same group of people, in the case of a coordinated cyber attack).
+  - Multi-accounting - this script is a bit tricky and involves randomly generating a series of users with only slight modifications to the email address. This attempts to simulate loyalty accounts that have been created by the same person (or same group of people, in the case of a coordinated cyber attack). It accepts an argument to control how many customer profiles are created. Simulating cyber attacks requires a burst of 100 or more customer profiles.
   - Shared Accounts - simulates a situation where the same loyalty identifier is used on multiple transactions at different stores in the same day. Transactions with the same user_id are sent to different store_ids all within x minutes of one another.
 
 - Campaigns
