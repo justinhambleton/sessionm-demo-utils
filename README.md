@@ -1,7 +1,7 @@
 # SessionM Demo Utils
 
 ## Overview
-This collection of python scripts are designed to interact with specific Sessionm demo environments, primarily to generate randomized customer and transaction data in bulk. These scripts also aid in diagnosing campaign specific use cases as well as simulate anomalous conditions for SessionM's Anamoly Detection reporting.
+This collection of python scripts are designed to interact with specific Sessionm demo environments, primarily to generate randomized customer and transaction data in bulk. These scripts also aid in diagnosing campaign specific use cases as well as simulate anomalous conditions for SessionM's Anomaly Detection reporting.
 
 The scripts are organized into the following categories:
 
