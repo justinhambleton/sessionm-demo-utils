@@ -12,7 +12,9 @@ from send_transactions import send_transactions
 
 # Load and define environment variables based on argument
 def load_environment_variables(context):
-    load_dotenv()
+    # Specify the path to the .env file in the root directory
+    env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.env'))
+    load_dotenv(dotenv_path=env_path)
     env_vars = {
         'CLOUDPOS_ENDPOINT': os.getenv(f'{context.upper()}_CLOUDPOS_ENDPOINT'),
         'AUTH_TOKEN': os.getenv(f'{context.upper()}_CLOUDPOS_AUTH_TOKEN'),
