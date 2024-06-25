@@ -84,9 +84,9 @@ Similarly, `txn_randomizer.py` invokes send_transactions.py once the randomized 
 
 ## Usage
 
-1. Activate the Virtual Environment
+Navigate to your project directory and activate the virtual environment
+
    ```sh
-   cd my_project/directory
    source .venv/bin/activate
    ```
 ### Using the main `generate_customer.py` Script
