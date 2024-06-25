@@ -84,6 +84,11 @@ Similarly, `txn_randomizer.py` invokes send_transactions.py once the randomized 
 
 ## Usage
 
+1. Activate the Virtual Environment
+   ```sh
+   cd my_project/directory
+   source .venv/bin/activate
+   ```
 ### Using the main `generate_customer.py` Script
 The main `generate_customer.py` script accepts important command-line arguments to customize its behavior. Before running the `generate_customer.py` script, familiarize yourself with the arguments below to ensure proper useage.
 
