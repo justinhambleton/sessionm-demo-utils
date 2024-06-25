@@ -1,3 +1,4 @@
+import sys
 import os
 import argparse
 import logging
@@ -6,6 +7,7 @@ import asyncio
 from pymongo import MongoClient, UpdateOne
 from datetime import datetime, timezone
 from dotenv import load_dotenv
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
 from send_transactions import send_transactions
 
 # Load and define environment variables based on argument

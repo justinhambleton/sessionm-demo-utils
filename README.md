@@ -60,7 +60,7 @@ pip install pymongo faker asyncio aiohttp argparse
 
 > All scripts runs asynchronously! Be mindful of the important setting thresholds mentioned below to avoid negatively impacting an environment.
 
-### generate_customer.py
+### generate-customers/generate_customer.py
 
 This is the main script for generating random customer data. It accepts command-line arguments to control the environment context, locale, logging and whether transactions should be sent after the customer profiles are created. The script includes an important setting that determines the range of new customer profiles created each time the script runs. This range is a randomized value between a min and max value. The max value is the most important setting to pay attention to. It is recommended the range max never exceed 500 to avoid negatively impacting an environment.
 

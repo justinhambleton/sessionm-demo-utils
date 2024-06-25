@@ -1,3 +1,4 @@
+import sys
 import os
 import random
 import uuid
@@ -12,6 +13,8 @@ from faker import Faker
 from datetime import datetime, timezone
 import logging
 from pymongo import MongoClient
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
+from send_transactions import send_transactions
 
 # Load and define environment variables based on argument
 def load_environment_variables(context):
