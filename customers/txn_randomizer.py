@@ -72,6 +72,7 @@ async def randomize_transactions(context, enable_logging):
     user_ids_with_timestamp = [{'user_id': doc['user_id'], 'timestamp': doc['timestamp']} for doc in data]
     total_collection_size = len(user_ids_with_timestamp)
 
+    # ------------------------ VERY IMPORTANT SAMPLE SETTING  ---------------------------
     # Define the sample percentage
     sample_percentage = random.uniform(0.1, 0.4)
 
