@@ -50,7 +50,7 @@ def connect_mongo(mongo_uri, mongo_db_name):
 def fetch_data(collection_name, db):
     collection = db[collection_name]
     data = collection.find().sort("timestamp", -1)  # Sort by timestamp in descending order
-    return data
+    return [{'user_id': doc['user_id'], 'timestamp': doc['timestamp'], 'external_id': doc['external_id']} for doc in data if 'external_id' in doc]
 
 # Main function to orchestrate fetching data and sending transactions
 async def randomize_transactions(context, enable_logging):
@@ -69,8 +69,7 @@ async def randomize_transactions(context, enable_logging):
 
     # Fetch data
     data = fetch_data(env_vars['MONGO_COLLECTION_NAME'], db)
-    user_ids_with_timestamp = [{'user_id': doc['user_id'], 'timestamp': doc['timestamp']} for doc in data]
-    total_collection_size = len(user_ids_with_timestamp)
+    total_collection_size = len(data)
 
     # ------------------------ VERY IMPORTANT SAMPLE SETTING  ---------------------------
     # Define the sample percentage
@@ -78,11 +77,11 @@ async def randomize_transactions(context, enable_logging):
 
     # Retain only a percentage of the total collection
     sample_size = int(total_collection_size * sample_percentage)
-    sample_users = user_ids_with_timestamp[:sample_size]
-    sample_user_ids = [doc['user_id'] for doc in sample_users]
+    sample_users = data[:sample_size]
+    sample_external_ids = [doc['external_id'] for doc in sample_users]
 
     # Send transactions
-    await send_transactions(sample_user_ids, context, enable_logging)
+    await send_transactions(sample_external_ids, context, enable_logging)
 
     # Update sampled users in MongoDB with the last transaction timestamp
     lasttxn_timestamp = datetime.now(timezone.utc).isoformat()

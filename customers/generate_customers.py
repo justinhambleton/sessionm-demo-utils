@@ -169,7 +169,7 @@ async def generate_and_send_data(context, env_vars, enable_logging, locale):
         # ------------------------ VERY IMPORTANT RANGE SETTING  ---------------------------
         # This determines the min and max number of customer profiles that will be generated
         # DO NOT EXCEED MAX OF 500
-        for _ in range(random.randint(50, 250)):
+        for _ in range(random.randint(10, 20)):
             customer_data = generate_customer_data(context)
             data = {"user": customer_data}
             tasks.append(send_to_api(session, data, auth, api_url))
@@ -185,7 +185,7 @@ async def generate_and_send_data(context, env_vars, enable_logging, locale):
         if enable_logging:
             # Create the filename with timestamp
             timestamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
-            filename = os.path.join('logs', f"customers_{timestamp}.json")
+            filename = os.path.join('logs', f"generate_customers_{timestamp}.json")
 
             # Extract and write the responses to the local JSON file
             responses = [result["response"] for result in results if "response" in result]
@@ -194,15 +194,16 @@ async def generate_and_send_data(context, env_vars, enable_logging, locale):
 
             logger.info(f"{len(results)} customers saved to {filename}")
 
-        # Extract user.id and user.email from responses and store in MongoDB
+        # Extract user.id, user.external_id and user.email from responses and store in MongoDB
         for result in results:
             if result["status"] == 200:
                 try:
                     response_json = json.loads(result["response"])
                     if "user" in response_json:
                         user_id = response_json["user"]["id"]
+                        external_id = response_json["user"]["external_id"]
                         email = response_json["user"]["email"]
-                        user_records.append({"user_id": user_id, "email": email, "timestamp": datetime.now(timezone.utc)})
+                        user_records.append({"user_id": user_id, "external_id": external_id, "email": email, "timestamp": datetime.now(timezone.utc)})
                 except (json.JSONDecodeError, KeyError) as e:
                     logger.error(f"Error parsing response: {e}")
 
@@ -212,7 +213,7 @@ async def generate_and_send_data(context, env_vars, enable_logging, locale):
 
         logger.info(f"Summary of responses: {responses}")
 
-        return [record["user_id"] for record in user_records]
+        return [record["external_id"] for record in user_records]
 
 async def main(context, send_txns, enable_logging, locale):
     global fake
