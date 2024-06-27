@@ -169,7 +169,7 @@ async def generate_and_send_data(context, env_vars, enable_logging, locale):
         # ------------------------ VERY IMPORTANT RANGE SETTING  ---------------------------
         # This determines the min and max number of customer profiles that will be generated
         # DO NOT EXCEED MAX OF 500
-        for _ in range(random.randint(10, 20)):
+        for _ in range(random.randint(50, 250)):
             customer_data = generate_customer_data(context)
             data = {"user": customer_data}
             tasks.append(send_to_api(session, data, auth, api_url))

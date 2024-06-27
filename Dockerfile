@@ -1,26 +1,20 @@
-# Use the official Python image from the Docker Hub
-FROM python:3.9
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-# Set environment variables to prevent Python from writing .pyc files and buffering stdout/stderr
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+# Set the working directory in the container
+WORKDIR /app
 
-# Set the working directory inside the container
-WORKDIR /usr/src/app
+# Copy the requirements file into the container
+COPY requirements.txt /app/
 
-# Install any global dependencies (if any)
-# RUN pip install some-global-dependency
-
-# Copy the requirements.txt file into the container
-COPY requirements.txt /usr/src/app/
-
-# Install the Python dependencies
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code into the container
-COPY . /usr/src/app/
+COPY . /app
 
-# Specify the command to run the application
-# Adjust the CMD line based on the script you want to run, for example:
-# CMD ["python", "customers/generate_customers.py"]
-CMD ["python", "customers/generate_customers.py"]
+# Set the entrypoint to the generate-customers.py script
+ENTRYPOINT ["python", "customers/generate-customers.py"]
+
+# Set the default arguments for the script
+CMD ["--context", "retail", "--locale", "en_US", "--sendTxns", "--enableLogging"]
